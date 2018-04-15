@@ -1,0 +1,103 @@
+{
+	"variables": [],
+	"info": {
+		"name": "JIRA API",
+		"_postman_id": "d7f637b2-7842-a4ef-7422-0e63527323dd",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8085/jira/rest/auth/1/session",
+			"request": {
+				"url": "http://localhost:8085/rest/auth/1/session",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"username\":\"administrator\",\"password\":\"test\"}\t"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8085/rest/api/2/issue",
+			"request": {
+				"url": "http://localhost:8085/rest/api/2/issue",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID=DC4DD4C6B80E000AF203AA1FCE68A945",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"fields\": {\n\t\t\"project\":\n\t\t{\n\t\t\"key\":\"PFRA\"\n\t\t},\n\t\t\"summary\":\"REST sample_15Apr_1\",\n\t\t\"issuetype\":{\n\t\t\t\"name\":\"Bug\"\n\t\t},\n\t\t\"assignee\":{\n\t\t\"name\":\"administrator\"\n\t\t},\n       \t\"description\":\"Test for Defect with all mandatory and important options parameters addition on 15 Apr\",\n\t\t\"priority\": {\n            \"name\": \"High\"\n        }\n\t\t\t\n\t\t}\n\t\t\n\t}\n"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/rest/api/2/issue/{10004}",
+			"request": {
+				"url": "http://localhost:8085/rest/api/2/issue/10019",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID=DC4DD4C6B80E000AF203AA1FCE68A945",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8085/rest/api/2/issue/{issueIdOrKey}/comment",
+			"request": {
+				"url": "http://localhost:8085/rest/api/2/issue/10020/comment",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID=DC4DD4C6B80E000AF203AA1FCE68A945",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"body\": \"Comment for addition of analysis through RESTAPI test through Postman\",\r\n    \"visibility\": {\r\n        \"type\": \"role\",\r\n        \"value\": \"Administrators\"\r\n    }\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
