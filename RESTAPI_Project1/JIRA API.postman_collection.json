@@ -98,6 +98,31 @@
 				"description": ""
 			},
 			"response": []
+		},
+		{
+			"name": "http://localhost:8085/rest/api/2/issue/10020/comment/10006",
+			"request": {
+				"url": "http://localhost:8085/rest/api/2/issue/10020/comment/10006",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID=DC4DD4C6B80E000AF203AA1FCE68A945",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"body\": \"UPDATE POSTMAN request to update API comment for JIRA on 15Apr 2018\",\r\n    \"visibility\": {\r\n        \"type\": \"role\",\r\n        \"value\": \"Administrators\"\r\n    }\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
 		}
 	]
 }
