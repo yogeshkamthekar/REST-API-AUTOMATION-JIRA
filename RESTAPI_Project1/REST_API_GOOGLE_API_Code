@@ -1,0 +1,48 @@
+import io.Restassured.RestAssured;
+import io.restassured.http.ContentType;
+import io.restassured.matcher.ResponseAwareMatcher;
+import io.restassured.path.json.JsonPath;
+import io.restassured.response.Response;
+import io.restassured.response.ValidatetableResponse;
+import static org.hamrest.Matchers.equalTo;
+import static io.restassured.Restassured.given;
+import java.io.FileInputstream;
+import java.io.IOException;
+import java.util.properties;
+import org.testng.Assert;
+import org.testng.Reporter;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.Writer;
+
+public class getrequest{
+
+static Properties prop = new Properties();
+@BeforeTest
+public void before() throws IOException{
+FileInputStream fis =new FileInputStream("D:\\path of file");
+prop.load(fis);
+}
+
+@Test
+ public static void method1()
+ {
+ try{
+ Restassured.baseURI=prop.getProperty("HOSTNAME");
+ Response res = given().
+ relaxHTTPSValidation().
+ when().
+ get("/city/Pune").
+ then().assertThat().statusCode(200).and().
+ body("City",equalTo("Pune")).
+ extract().response();
+ String responseasstring = res.asString();
+ Jsonpath js = new Jsonpath(responseasstring);
+ Reporter.log("Response in json = "+js.get("City"));
+ }
+ catch(Exception e)
+ {}
+ }
