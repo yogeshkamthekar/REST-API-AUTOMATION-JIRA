@@ -49,8 +49,28 @@ prop.load(fis);
  @Test
  public static void method2()
  {
+ try{
  Restassured.baseURI=prop.getProperty("HOSTNAME");
- 
+ Response res = given().
+ relaxHTTPSValidation().
+ when().
+ get("/locationutil/mylocation").
+ then().assertThat().statuscode(200).and().
+ extract().response();
+ String responseasstring = res.asString();
+ System.out.println("Response = "+responseasstring);
+ Jsonpath js =new JsonPath(responseasstring);
+ Reporter.log("City = "+js.get("City"));
+ if(responseasstring.contains("India"))
+ {
+ System.out.println("found the result");
+ }
+ catch(Exception e)
+ {
+ Assert.fail("failed in get request with exception = " +e);
+ }
+ }
+
  
  
  }
