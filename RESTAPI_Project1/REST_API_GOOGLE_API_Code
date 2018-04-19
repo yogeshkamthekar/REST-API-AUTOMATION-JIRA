@@ -45,4 +45,13 @@ prop.load(fis);
  }
  catch(Exception e)
  {}
+ 
+ @Test
+ public static void method2()
+ {
+ Restassured.baseURI=prop.getProperty("HOSTNAME");
+ 
+ 
+ 
+ }
  }
